@@ -49,3 +49,6 @@
   - basicをクラス化したバージョン
 - module
   - classをモジュール化したバージョン
+- bin
+  - NUCLEO_F401RE_ulab.bin
+   - コミット番号 27767aa のmicropython + ulab 0.51.1 で作成したNUCLEO_F401RE用のバイナリファイル．
