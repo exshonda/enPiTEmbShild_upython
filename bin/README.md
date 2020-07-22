@@ -18,5 +18,9 @@
 - arm-none-eabi-objcopy -O binary -S firmware.elf firmware.bin
 
 ## インストール方法
-- ボードをPCに接続し出てきたドライブに firmware.bin をコピーする．
+- NUCLEO系
+  - ボードをPCに接続し出てきたドライブに firmware.bin をコピーする．
+- Pyboard
+  - [ここ](https://github.com/micropython/micropython/wiki/Pyboard-Firmware-Update)を参考にDFUモードにする．
+  - STM32CubeProgrammerで接続して.binを書き込む．
 
