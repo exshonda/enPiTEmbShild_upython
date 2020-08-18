@@ -1,4 +1,7 @@
 from machine import Pin
+import micropython
+
+micropython.opt_level(2)
 
 class LED:  
   LED1 = 1

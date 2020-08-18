@@ -1,0 +1,71 @@
+#
+#  ターゲットボードの定義
+#
+ifeq ($(BOARDNO),)
+BOARDNO = 3  #"STM32F401 Nucleo"
+endif
+
+#
+#  オブジェクトファイル名の拡張子の設定
+#
+OBJEXT = elf
+
+#
+#  オブジェクトファイル名の定義
+#
+OBJFILE = $(OBJNAME).$(OBJEXT)
+
+#
+#   コンパイラの設定
+#
+GCC_TARGET_PREFIX = arm-atollic-eabi-
+
+CC = $(GCC_TARGET_PREFIX)gcc
+CXX = $(GCC_TARGET_PREFIX)g++
+AS = $(GCC_TARGET_PREFIX)as
+LD = $(GCC_TARGET_PREFIX)ld
+AR = $(GCC_TARGET_PREFIX)ar
+NM = $(GCC_TARGET_PREFIX)nm
+OBJCOPY = $(GCC_TARGET_PREFIX)objcopy
+OBJDUMP = $(GCC_TARGET_PREFIX)objdump
+
+LDSCRIPT = $(COMMON_DIR)/stm32F4_rom.ld
+
+COPTS   = -mcpu=cortex-m4 -Wa,--gstabs -mthumb -mthumb-interwork -mlittle-endian -nostdlib -O2 -g -Wall
+CDEFS   = -DBOARDNO=$(BOARDNO)
+INCLUDES = -I.
+
+vpath %.c $(COMMON_DIR)
+vpath %.S $(COMMON_DIR)
+
+AOBJS = startup_stm32f4xx.o
+COBJS := $(COBJS) $(OBJNAME).o stm32f4xx.o
+
+CDEFS  := $(CDEFS) -DROM_EXEC=1 -DDEBUG
+INCLUDES := -I$(COMMON_DIR) $(INCLUDES)
+CFLAGS = $(COPTS) $(CDEFS) $(INCLUDES)
+LDFLAGS := -nostdlib $(LDFLAGS) -T $(LDSCRIPT)
+
+all:	$(OBJFILE)
+
+$(OBJFILE):	$(COBJS) $(AOBJS)
+	$(CC)	$(CFLAGS) $(LDFLAGS) -o $(OBJFILE) \
+			$(AOBJS) $(COBJS) -lc -lgcc
+	$(NM)	$(OBJFILE) > $(OBJNAME).syms
+	$(OBJCOPY) -O srec -S $(OBJFILE) $(OBJNAME).srec
+	$(OBJDUMP) -t -h $(OBJFILE) > $(OBJNAME).map
+	$(OBJDUMP) -lD --disassemble --source $(OBJFILE) > $(OBJNAME).lst
+
+$(COBJS): %.o: %.c
+	$(CC) -c $(CFLAGS) $<
+
+$(AOBJS): %.o: %.S
+	$(CC) -c $(CFLAGS) $<
+
+# rules
+
+clean:
+	rm -f *.o
+	rm -f $(OBJFILE) *.syms *.srec *.map *.lst
+
+
