@@ -17,7 +17,7 @@ NUCLEO-STM32F401RE用の性能評価プログラム．
 - C言語による計測
  - 0.0357 sec
 
-- stm32f401_perf.py による計測
+- led_stm32f401.py による計測
 
 | time.ticks_us() oh | 23.0 usec |
 ----|---- 
