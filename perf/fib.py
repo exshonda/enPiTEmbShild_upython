@@ -1,4 +1,4 @@
-﻿import time, machine
+﻿import utime
 
 def blink_empty(n):
 	pass
@@ -29,20 +29,20 @@ def Fib_native(n):
 		return b
 
 def time_oh(f, n):
-	t0 = time.ticks_us()
+	t0 = utime.ticks_us()
 	f(n)
-	t1 = time.ticks_us()
-	dt = time.ticks_diff(t1, t0)
-	fmt ='time.ticks_us() oh : {:f} usec'
+	t1 = utime.ticks_us()
+	dt = utime.ticks_diff(t1, t0)
+	fmt ='utime.ticks_us() oh : {:f} usec'
 	print(fmt.format(dt))
 
 def time_it(f, n, s = ''):
 	if not s:
 		s = f.__name__
-	t0 = time.ticks_us()
+	t0 = utime.ticks_us()
 	fib = f(n)
-	t1 = time.ticks_us()
-	dt = time.ticks_diff(t1, t0)
+	t1 = utime.ticks_us()
+	dt = utime.ticks_diff(t1, t0)
 	fmt ='{:10s} : {:5d} usec {:5d}'
 	print(fmt.format(s, dt, fib))
 
