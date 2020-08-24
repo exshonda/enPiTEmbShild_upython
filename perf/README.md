@@ -29,3 +29,15 @@ NUCLEO-STM32F401RE用の性能評価プログラム．
 | blink_native2   | 1.516 sec |
 | blink_viper     | 0.253 sec |
 | blink_asm       | 0.019 sec |
+
+
+##mrubyの実行方法
+- ビルド
+ - [パッケージ](http://forum.mruby.org/download/index212.html)をダウンロード
+ - 展開
+ - cd ./mruby-2.1.2
+ - make
+
+- 実行
+ - ./mruby-2.1.2/bin/mruby xxx.rb
+

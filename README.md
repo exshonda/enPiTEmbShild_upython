@@ -39,6 +39,10 @@
 - ファイルのコピー
   - ampy put xx.py
 
+## UNIX向けのビルド
+
+
+
 ## フォルダ
 
 - basic
