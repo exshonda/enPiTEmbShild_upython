@@ -1,4 +1,4 @@
-﻿import utime
+import utime
 
 def blink_empty(n):
 	pass
