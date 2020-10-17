@@ -1,0 +1,8 @@
+- 対象ボード : NUCLEO-F401RE
+- プログラム : GPIOをON/OFFする．
+- 対象ポート : PB_8(D15)
+ - ポートの情報 : https://os.mbed.com/platforms/ST-Nucleo-F401RE/
+- メイン関数 : ./Core/Src/main.c
+- 測定結果 : 
+ - GPIO ON_OFF : 0.2us
+ - Quick Sort  :  25us

@@ -1,0 +1,7 @@
+13:00:14 **** Clean-only build of configuration Release for project f746zg_prog ****
+make -j8 clean 
+rm -rf *
+ 
+
+13:00:14 Build Finished. 0 errors, 0 warnings. (took 369ms)
+

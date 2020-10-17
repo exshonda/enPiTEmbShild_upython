@@ -1,0 +1,4 @@
+13:02:26 **** Clean-only build of configuration Debug for project f401re_prog ****
+make -j8 clean 
+rm -rf *
+ 

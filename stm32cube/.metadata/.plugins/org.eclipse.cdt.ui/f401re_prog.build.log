@@ -1,0 +1,7 @@
+13:02:26 **** Clean-only build of configuration Debug for project f401re_prog ****
+make -j8 clean 
+rm -rf *
+ 
+
+13:02:26 Build Finished. 0 errors, 0 warnings. (took 390ms)
+
